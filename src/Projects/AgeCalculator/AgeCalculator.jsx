@@ -50,33 +50,34 @@ const AgeCalculator = () => {
 
   }
   return (
-    <div className="h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 to-purple-200">
-      <div className="bg-white shadow-2xl rounded-2xl p-8 h-2/3 w-2/3 text-center">
-        <h1 className="text-7xl font-bold text-gray-800 mb-6">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-blue-100 to-purple-200 p-4">
+      <div className="bg-white shadow-2xl rounded-2xl p-6 sm:p-8 max-w-xl w-full text-center">
+        <h1 className="text-4xl sm:text-6xl font-bold text-gray-800 mb-6">
           <span className="text-purple-600">Age</span> Calculator
         </h1>
-        <div className="flex justify-center flex-col sm:flex-row items-center gap-4 mt-20">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-10">
           <input
             type="date"
             className="w-full sm:w-auto border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
             onChange={(e) => setBirthDate(e.target.value)}
+            max={todayDate}// limit the date (user can't enter days after today)
           />
-          <button className="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition"
+          <button
+            className="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition"
             onClick={handelCalculate}
           >
             Calculate
           </button>
         </div>
-      </div>
-      {result &&
-        <>
-          <div className='text-5xl'>
+
+        {result && (
+          <div className="text-2xl sm:text-3xl mt-10 text-gray-700">
             {result}
           </div>
-        </>
-      }
+        )}
+      </div>
     </div>
-  );
+  )
 }
 
 export default AgeCalculator
